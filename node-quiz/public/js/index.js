@@ -26,12 +26,7 @@
         answers.removeChild(answers.firstChild);
       }
 
-      const answerslist = [];
-      answerslist.push(...users[currentNum].incorrect_answers);
-      answerslist.push(users[currentNum].correct_answer);
-
-      const shuffleAnswers = shuffle([...answerslist]);
-      shuffleAnswers.forEach((answer, index) => {
+      users[currentNum].shuffleAnswers.forEach((answer, index) => {
         const li = document.createElement('li');
         li.textContent = answer;
         answers.appendChild(li);
@@ -52,16 +47,6 @@
         });
       });
     };
-
-    // シャッフルの処理
-    const shuffle = (arr) => {
-      for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[j], arr[i]] = [arr[i], arr[j]];
-      }
-      return arr;
-    };
-
     setQuiz();
   };
 
