@@ -8,5 +8,4 @@ app.listen(4000, () => {
 });
 
 app.get('/api/v1/list', quizController.doGetQuiz);
-
 module.exports = router;

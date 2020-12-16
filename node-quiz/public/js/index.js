@@ -50,25 +50,15 @@
     setQuiz();
   };
 
-  // 非同期処理の待ち時間の処理
-  const blockTime = (timeout) => {
-    const startTime = Date.now();
-    while (true) {
-      const diffTime = Date.now() - startTime;
-      if (diffTime >= timeout) {
-        return;
-      }
-    }
-  };
+  const getQuiz = async () => {
+   await callApi();
+     home.classList.add('hidden');
+     container.classList.remove('hidden');
+   };
 
   // 非同期処理の機能
   document.getElementById('start').addEventListener('click', () => {
-    setTimeout(() => {
-      home.classList.add('hidden');
-      container.classList.remove('hidden');
-      callApi();
-      blockTime(2000);
-    }, 10);
+   getQuiz()
     const container = document.getElementById('container');
     const home = document.getElementById('home');
     while (home.firstChild) {
